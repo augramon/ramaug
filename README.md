@@ -12,7 +12,7 @@ Desenvolvi este portfólio para mostrar de forma simples e objetiva:
 - meus principais projetos  
 - minha stack e meu estilo de desenvolvimento  
 
-O site é leve, responsivo e pensado para causar uma boa impressão em recrutadores e clientes
+O site é leve, responsivo e pensado para causar uma boa impressão
 
 Pretendo mantê-lo constantemente atualizado
 

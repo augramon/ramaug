@@ -78,7 +78,7 @@ export const About = ({ language }: AboutProps) => {
   }, []);
 
   return (
-    <section id="about" className="relative py-30 md:py-40">
+    <section id="about" className="relative min-h-screen py-30 md:py-40 flex items-center justify-center">
 
       {/* video de fundo */}
       <div className="absolute inset-0 pointer-events-none">

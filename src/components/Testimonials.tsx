@@ -80,11 +80,11 @@ export const Testimonials = ({ language }: TestimonialsProps) => {
 
 
   return (
-    <section id="testimonials" className="py-40 relative">
+    <section id="testimonials" className="py-40 relative min-h-screen flex items-center justify-center">
 
       {/* video de fundo */}
       <video
-        className="rotate-180  absolute inset-0 w-full h-full object-cover opacity-[0.2]"
+        className=" absolute inset-0 w-full h-full object-cover opacity-[0.2]"
         ref={videoRefBG}
         src={bgVideo}
         autoPlay

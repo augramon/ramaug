@@ -91,7 +91,7 @@ export const Contact = ({ language }: ContactProps) => {
 
   return (
     
-    <section id="contact" className="relative py-20">
+    <section id="contact" className="relative py-20 min-h-screen flex items-center justify-center">
 
       <video 
       src={bgVideo}
@@ -99,7 +99,7 @@ export const Contact = ({ language }: ContactProps) => {
       muted
       loop
       playsInline
-      className="absolute inset-0 w-full h-full object-cover opacity-[0.2] scale-x-[-1]"
+      className="absolute inset-0 w-full h-full object-cover opacity-[0.2] scale-x-[-1] rotate-180"
       
       ></video>
 

@@ -70,11 +70,39 @@ const ProjectCard = ({ project, language, index }: any) => {
 };
 
 export const Projects = ({ language }: ProjectsProps) => {
+
+  const items = [
+    {
+      image: 'https://picsum.photos/300/300?grayscale',
+      link: 'https://google.com/',
+      title: 'Item 1',
+      description: 'This is pretty cool, right?'
+    },
+    {
+      image: 'https://picsum.photos/400/400?grayscale',
+      link: 'https://google.com/',
+      title: 'Item 2',
+      description: 'This is pretty cool, right?'
+    },
+    {
+      image: 'https://picsum.photos/500/500?grayscale',
+      link: 'https://google.com/',
+      title: 'Item 3',
+      description: 'This is pretty cool, right?'
+    },
+    {
+      image: 'https://picsum.photos/600/600?grayscale',
+      link: 'https://google.com/',
+      title: 'Item 4',
+      description: 'This is pretty cool, right?'
+    }
+  ];
+
   const content = {
     pt: {
-      title: "Projetos",
-      professional: "Profissionais",
-      personal: "Pessoais",
+      title: "PROJETOS EM DESTAQUE",
+      // professional: "Profissionais",
+      // personal: "Pessoais",
       viewProject: "Ver Projeto",
       viewCode: "Ver Código",
       professionalProjects: [
@@ -113,9 +141,9 @@ export const Projects = ({ language }: ProjectsProps) => {
       ],
     },
     en: {
-      title: "Projects",
-      professional: "Professional",
-      personal: "Personal",
+      title: "FEATURED PROJECTS",
+      // professional: "Professional",
+      // personal: "Personal",
       viewProject: "View Project",
       viewCode: "View Code",
       professionalProjects: [
@@ -156,7 +184,7 @@ export const Projects = ({ language }: ProjectsProps) => {
   };
 
   return (
-    <section id="projects" className="relative py-20">
+    <section id="projects" className="relative py-20 min-h-screen flex items-center justify-center">
 
       {/* video de fundo */}
       <video
@@ -167,18 +195,28 @@ export const Projects = ({ language }: ProjectsProps) => {
         loop
       />
 
+      {/* titulo projetos */}
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 animate-fade-in">
           {content[language].title}
         </h2>
 
+
         <Tabs defaultValue="professional" className="max-w-6xl mx-auto">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
+
+          {/* botao que alterna entre profissional e pessoal */}
+          {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-1 mb-12">
+
             <TabsTrigger value="professional">{content[language].professional}</TabsTrigger>
             <TabsTrigger value="personal">{content[language].personal}</TabsTrigger>
-          </TabsList>
 
+          </TabsList> */}
+
+
+
+          {/* cards projetos profissionais */}
           <TabsContent value="professional">
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {content[language].professionalProjects.map((project, index) => (
                 <ProjectCard key={index} project={project} language={language} index={index} />
@@ -186,13 +224,14 @@ export const Projects = ({ language }: ProjectsProps) => {
             </div>
           </TabsContent>
 
-          <TabsContent value="personal">
+          {/* cards projetos pessoais */}
+          {/* <TabsContent value="personal">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {content[language].personalProjects.map((project, index) => (
                 <ProjectCard key={index} project={project} language={language} index={index} />
               ))}
             </div>
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       </div>
 
