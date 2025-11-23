@@ -3,6 +3,7 @@
 Este é o meu portfólio. Criei este projeto para apresentar meus trabalhos, minhas habilidades e a minha evolução como desenvolvedor. O foco aqui é entregar uma experiência rápida, moderna e visualmente agradável
 
 OBS: Em andamento...
+
 ---
 
 ## Sobre o Projeto
