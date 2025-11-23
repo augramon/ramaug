@@ -3,6 +3,8 @@ import { ExternalLink, Github } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import bgVideo from "@/assets/backgroundVideo.mp4";
+import CardSwap, { Card } from './CardSwap'
+import SpotlightCard from './SpotlightCard';
 
 interface ProjectsProps {
   language: "pt" | "en";
@@ -18,51 +20,57 @@ const ProjectCard = ({ project, language, index }: any) => {
   };
 
   return (
+    // fundo dos cards
     <div
       className="group glass-dark rounded-xl overflow-hidden hover:scale-105 transition-all duration-300 animate-fade-in"
       style={{ animationDelay: `${index * 0.1}s` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* cards */}
+      {/* imagem dos cards */}
       <div className="relative h-48 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full object-cover transition-transform duration-300 ${
-            isHovered ? "scale-110" : "scale-100"
-          }`}
-          />
+          className={`w-full h-full object-cover transition-transform duration-300 ${isHovered ? "scale-110" : "scale-100"
+            }`}
+        />
 
         <div className={`absolute inset-0 bg-gradient-to-t from-background to-transparent transition-opacity duration-300 ${isHovered ? "opacity-90" : "opacity-60"}`} />
 
       </div>
 
       <div className="p-6">
+
+        {/* titulo dos cards */}
         <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
+
+        {/* descrição dos cards */}
         <p className="text-muted-foreground mb-4 text-sm">{project.description}</p>
 
+        {/* gap entre tecnologias usadas e botao ver projeto */}
         <div className="flex flex-wrap gap-2 mb-4">
+
           {project.tech.map((tech: string, i: number) => (
-            <span
-              key={i}
-              className="px-2 py-1 bg-accent/10 text-accent text-xs rounded border border-accent/30"
-            >
-              {tech}
-            </span>
+            // tecnologias usadas nos projetos
+            <span key={i} className="px-2 py-1 bg-accent/10 text-accent text-xs rounded border border-accent/30"> {tech} </span>
           ))}
         </div>
 
+        {/* botao ver projeto e botao github */}
         <div className="flex gap-2">
+
           <Button size="sm" variant="outline" className="flex-1 gap-2">
             <ExternalLink className="h-4 w-4" />
             {labels[language].viewProject}
           </Button>
+
           <Button size="sm" variant="ghost">
             <Github className="h-4 w-4" />
           </Button>
+
         </div>
       </div>
     </div>
@@ -70,33 +78,6 @@ const ProjectCard = ({ project, language, index }: any) => {
 };
 
 export const Projects = ({ language }: ProjectsProps) => {
-
-  const items = [
-    {
-      image: 'https://picsum.photos/300/300?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 1',
-      description: 'This is pretty cool, right?'
-    },
-    {
-      image: 'https://picsum.photos/400/400?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 2',
-      description: 'This is pretty cool, right?'
-    },
-    {
-      image: 'https://picsum.photos/500/500?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 3',
-      description: 'This is pretty cool, right?'
-    },
-    {
-      image: 'https://picsum.photos/600/600?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 4',
-      description: 'This is pretty cool, right?'
-    }
-  ];
 
   const content = {
     pt: {
@@ -212,16 +193,60 @@ export const Projects = ({ language }: ProjectsProps) => {
 
           </TabsList> */}
 
-
-
-          {/* cards projetos profissionais */}
+          {/* cards projetos */}
           <TabsContent value="professional">
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {content[language].professionalProjects.map((project, index) => (
-                <ProjectCard key={index} project={project} language={language} index={index} />
-              ))}
+            <div style={{ height: '500px', position: 'relative' }}>
+
+              <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+
+                {/* descrição dos projetos em destaque */}
+
+                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+
+                  <p className="text-muted-foreground leading-relaxed text-lg">
+                    Cada projeto aqui é um marco da minha jornada — ideias que saíram do papel,
+                    ganharam vida no código e hoje refletem minha visão de criar experiências digitais
+                    que sejam úteis, bonitas e memoráveis
+                  </p>
+
+                </SpotlightCard>
+         
+              </div>
+
+              <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+
+                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+
+                  <p className="text-muted-foreground leading-relaxed text-lg">
+                    Cada projeto aqui é um marco da minha jornada — ideias que saíram do papel,
+                    ganharam vida no código e hoje refletem minha visão de criar experiências digitais
+                    que sejam úteis, bonitas e memoráveis
+                  </p>
+
+                </SpotlightCard>
+              </div>
+
+              <div>
+                {/* card swap com os projetos */}
+                <CardSwap
+                  cardDistance={60}
+                  verticalDistance={70}
+                  delay={3000}
+                  pauseOnHover={false}
+                >
+                  {content[language].professionalProjects.map((project, index) => (
+
+                    <Card key={index}>
+                      <ProjectCard project={project} language={language} index={index} />
+                    </Card>
+
+                  ))}
+                </CardSwap>
+              </div>
+
             </div>
+
           </TabsContent>
 
           {/* cards projetos pessoais */}
