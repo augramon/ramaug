@@ -1,29 +1,28 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import bgVideo from "@/assets/backgroundVideo.mp4";
+import Squares from './Squares';
+import TextPressure from './TextPressure';
+import TrueFocus from './TrueFocus';
+
 
 interface HeroProps {
   language: "pt" | "en";
 }
 
-// const sora = Sora({ 
-//   subsets: ["latin"], weight: ["300", "400", "600", "700"] 
-// });
-
 const content = {
   pt: {
     greeting: "Olá, eu sou",
-    title: "Ramon Augusto",
-    microtext: "Desenvolvedor / Criador / Resolutor de Problemas",
-    slogan: "Transformando ideias em soluções digitais com propósito e precisão",
-    cta: "Ver meu trabalho em ação",
+    // title: "RAMON AUGUSTO",
+    microtext: "Criador Desenvolvedor",
+    slogan: "Transformando ideias em realidade através da imaginação",
+    cta: "Ver meu trabalho",
   },
   en: {
     greeting: "Hello, I'm",
-    title: "Ramon Augusto",
-    microtext: "Developer / Creator / Problem Solver",
-    slogan: "Transforming ideas into digital solutions with purpose and precision",
-    cta: "Seeing my work in action",
+    // title: "RAMON AUGUSTO",
+    microtext: "Creator Developer",
+    slogan: "Transforming ideas into reality through imagination",
+    cta: "See my work",
   },
 };
 
@@ -33,24 +32,27 @@ export const Hero = ({ language }: HeroProps) => {
   };
 
   return (
+
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* video de fundo */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover opacity-[0.2]"
-        src={bgVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+
+      <div className="absolute inset-0 -z-10 opacity-30 pointer-events-none">
+        <Squares
+          speed={0.5}
+          squareSize={40}
+          direction="diagonal"
+          borderColor="#fff"
+          hoverFillColor="#222"
+        />
+      </div>
 
       {/* container invisivel hero */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
 
+          {/* texto olá eu sou */}
           <p className="text-accent text-xl md:text-2xl font-medium">
             {content[language].greeting}
           </p>
@@ -59,17 +61,42 @@ export const Hero = ({ language }: HeroProps) => {
               bg-gradient-to-r from-white via-white/90 to-white/60 
               text-transparent bg-clip-text drop-shadow-[0_0_25px_rgba(0,200,255,0.25)]"
           >
-            {content[language].title}
+
+            {/* meu nome */}
+            <div style={{ position: 'relative', height: '150px' }}>
+              <TextPressure
+                text="RAMON AUGUSTO"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor="#ffffff"
+                strokeColor="#ff0000"
+                minFontSize={14}
+              />
+            </div>
           </h1>
 
+          {/* texto criador */}
           <p className="text-accent/80 text-sm tracking-[0.2em] uppercase">
-            {content[language].microtext}
+            <TrueFocus
+              sentence={content[language].microtext}
+              manualMode={false}
+              blurAmount={5}
+              borderColor="white"
+              animationDuration={1}
+              pauseBetweenAnimations={2}
+            />
           </p>
 
+          {/* frase */}
           <p className="text-xl md:text-1xl text-muted-foreground max-w-2xl mx-auto">
             {content[language].slogan}
           </p>
 
+          {/* botão */}
           <div className="pt-4">
             <Button
               onClick={scrollToProjects}
