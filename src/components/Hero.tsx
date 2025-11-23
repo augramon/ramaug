@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Squares from './Squares';
-import TextPressure from './TextPressure';
-import TrueFocus from './TrueFocus';
+import Squares from './folio_ui/Squares';
+import TextPressure from './folio_ui/TextPressure';
+import TrueFocus from './folio_ui/TrueFocus';
 
 
 interface HeroProps {

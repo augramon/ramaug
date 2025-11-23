@@ -3,8 +3,8 @@ import { ExternalLink, Github } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import bgVideo from "@/assets/backgroundVideo.mp4";
-import CardSwap, { Card } from './CardSwap'
-import SpotlightCard from './SpotlightCard';
+import CardSwap, { Card } from './folio_ui/CardSwap'
+import SpotlightCard from './folio_ui/SpotlightCard';
 
 interface ProjectsProps {
   language: "pt" | "en";
