@@ -1,7 +1,8 @@
-# Meu Portfólio
+## Meu Portfólio
 
 Este é o meu portfólio. Criei este projeto para apresentar meus trabalhos, minhas habilidades e a minha evolução como desenvolvedor. O foco aqui é entregar uma experiência rápida, moderna e visualmente agradável
 
+OBS: Em andamento...
 ---
 
 ## Sobre o Projeto
@@ -21,13 +22,13 @@ Pretendo mantê-lo constantemente atualizado
 ## Tecnologias Utilizadas
 
 - **React**
+- **TypeScript**
 - **Vite**
 - **TailwindCSS**
 - **Shadcn/UI**
 - **Framer Motion**
 - **Lucide Icons**
-- **Components (React Bits)**
-- **TypeScript**
+- **React Bits**
 
 ---
 
@@ -40,12 +41,14 @@ src/
  │    └── imagens-diversas
  ├── components/
  │    ├── About/
- │    ├── contact/
+ │    ├── CardSwap/
+ │    ├── Contact/
  │    ├── Footer/
  │    ├── Hero/
  │    ├── Navbar/
  │    ├── Projects/
  │    ├── Skills/
+ │    ├── SpotlightCard/
  │    ├── Testmonials/
  ├── ui/
  │    ├── .../
