@@ -1,7 +1,8 @@
 import { Code, Database, Palette, Rocket, Cloud, Shield, Code2, CodeSquare } from "lucide-react";
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiHtml5, SiJavascript, SiCss3, SiDjango, SiFlask, SiMysql } from 'react-icons/si';
 import LogoLoop from './folio_ui/LogoLoop';
-import PixelBlast from './folio_ui/PixelBlast';
+import Particles from './folio_ui/Particles';
+import RotatingText from './folio_ui/RotatingText'
 
 interface SkillsProps {
   language: "pt" | "en";
@@ -85,31 +86,22 @@ export const Skills = ({ language }: SkillsProps) => {
     <section id="skills" className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
       {/* background */}
-      <div style={{ width: '100%', height: '100%', position: 'absolute', opacity: 0.3 }}>
-        <PixelBlast
-          variant="circle"
-          pixelSize={6}
-          color="blue"
-          patternScale={3}
-          patternDensity={1.2}
-          pixelSizeJitter={0.5}
-          enableRipples
-          rippleSpeed={0.4}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          speed={0.6}
-          edgeFade={0.25}
-          transparent
+      <div className="absolute inset-0 top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-[0.3]">
+        <Particles
+          particleColors={['#ffffff', '#1F2E99']}
+          particleCount={333}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
         />
       </div>
 
       <div className="container mx-auto px-4">
 
-
-
         <div className="text-center mb-16">
-
-
 
           {/* titulo unico certificações */}
           {/* <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
@@ -117,15 +109,37 @@ export const Skills = ({ language }: SkillsProps) => {
           </h2> */}
 
           {/* titulo isolado */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in flex items-center justify-center gap-2 flex-wrap">
             {language === "pt" ? (
               <>
-                <span className="text-accent">Certificações</span> & Habilidades
+                <span>CERTIFICAÇÕES &</span>
+                <RotatingText
+                  texts={['HABILIDADES', 'ESTUDOS', 'CONHECIMENTOS']}
+                  mainClassName="px-2 sm:px-2 md:px-3 bg-blue-400 text-black/80 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2000}
+                />
               </>
             ) : (
               <>
-                <span className="text-accent">Certifications</span> &
-                Skills
+                CERTIFICATIONS & <RotatingText
+                  texts={['SSKILLS', 'STUDIES', 'KNOWLEDGE']}
+                  mainClassName="px-2 sm:px-2 md:px-3 bg-blue-400 text-black/80 overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={2000}
+                />
               </>
             )}
           </h2>
@@ -164,11 +178,7 @@ export const Skills = ({ language }: SkillsProps) => {
 
           </div>
 
-
-
         </div>
-
-
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {content[language].skills.map((skill, index) => (
@@ -179,12 +189,16 @@ export const Skills = ({ language }: SkillsProps) => {
             >
               <div className="flex items-center gap-4 mb-4">
 
-                <div className="w-12 h-12 bg-gradient-to-br from-accent to-tech rounded-lg flex items-center justify-center group-hover:animate-glow-pulse">
-                  <skill.icon className="h-6 w-6 text-white" />
+                {/* icones */}
+                <div className="w-12 h-12 bg-blue-400 to-tech rounded-lg flex items-center justify-center group-hover:animate-glow-pulse">
+                  <skill.icon className="h-6 w-6 text-black/80" />
                 </div>
 
+                {/* nome da certificação */}
                 <h3 className="text-xl font-bold">{skill.title}</h3>
+
               </div>
+
               <div className="flex flex-wrap gap-2">
                 {skill.items.map((item, i) => (
                   <span
@@ -199,6 +213,6 @@ export const Skills = ({ language }: SkillsProps) => {
           ))}
         </div>
       </div>
-    </section>
+    </section >
   );
 };

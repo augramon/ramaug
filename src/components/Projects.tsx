@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import bgVideo from "@/assets/backgroundVideo.mp4";
 import CardSwap, { Card } from './folio_ui/CardSwap'
 import SpotlightCard from './folio_ui/SpotlightCard';
+import Particles from './folio_ui/Particles';
 
 interface ProjectsProps {
   language: "pt" | "en";
@@ -167,14 +167,19 @@ export const Projects = ({ language }: ProjectsProps) => {
   return (
     <section id="projects" className="relative py-20 min-h-screen flex items-center justify-center">
 
-      {/* video de fundo */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none rotate-180 scale-x-[-1] opacity-[0.2]"
-        src={bgVideo}
-        autoPlay
-        muted
-        loop
-      />
+      {/* background */}
+      <div className="absolute inset-0 top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-[0.3]">
+        <Particles
+          particleColors={['#ffffff', '#1F2E99']}
+          particleCount={333}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
 
       {/* titulo projetos */}
       <div className="container mx-auto px-4 relative z-10">
@@ -211,7 +216,7 @@ export const Projects = ({ language }: ProjectsProps) => {
                   </p>
 
                 </SpotlightCard>
-         
+
               </div>
 
               <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mt-8">

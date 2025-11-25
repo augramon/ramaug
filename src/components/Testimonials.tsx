@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import bgVideo from "@/assets/backgroundVideo.mp4";
+import Particles from './folio_ui/Particles';
 import { useRef, useEffect } from "react";
 
 interface TestimonialsProps {
@@ -18,13 +18,13 @@ interface TestimonialsProps {
 export const Testimonials = ({ language }: TestimonialsProps) => {
 
   // Ajusta velocidade do vídeo
-  const videoRefBG = useRef<HTMLVideoElement>(null);
+  // const videoRefBG = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    if (videoRefBG.current) {
-      videoRefBG.current.playbackRate = 0.75;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (videoRefBG.current) {
+  //     videoRefBG.current.playbackRate = 0.75;
+  //   }
+  // }, []);
 
   const content = {
     pt: {
@@ -82,16 +82,19 @@ export const Testimonials = ({ language }: TestimonialsProps) => {
   return (
     <section id="testimonials" className="py-40 relative min-h-screen flex items-center justify-center">
 
-      {/* video de fundo */}
-      <video
-        className=" absolute inset-0 w-full h-full object-cover opacity-[0.2]"
-        ref={videoRefBG}
-        src={bgVideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      {/* background */}
+      <div className="absolute inset-0 top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-[0.3]">
+        <Particles
+          particleColors={['#1F2E99', '#ffffff']}
+          particleCount={333}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
 
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
@@ -130,7 +133,7 @@ export const Testimonials = ({ language }: TestimonialsProps) => {
                     </div>
 
                   </div>
-                  
+
                 </CarouselItem>
               ))}
 

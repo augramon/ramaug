@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
-import bgVideo from "@/assets/backgroundVideo.mp4";
+import Particles from './folio_ui/Particles';
 
 interface ContactProps {
   language: "pt" | "en";
@@ -65,16 +65,16 @@ export const Contact = ({ language }: ContactProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       contactSchema.parse(formData);
       setErrors({});
-      
+
       toast({
         title: language === "pt" ? "Mensagem enviada!" : "Message sent!",
         description: language === "pt" ? "Obrigado pelo contato. Retornarei em breve!" : "Thank you for contacting. I'll get back to you soon!",
       });
-      
+
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       if (err instanceof z.ZodError) {
@@ -90,18 +90,22 @@ export const Contact = ({ language }: ContactProps) => {
   };
 
   return (
-    
+
     <section id="contact" className="relative py-20 min-h-screen flex items-center justify-center">
 
-      <video 
-      src={bgVideo}
-      autoPlay
-      muted
-      loop
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover opacity-[0.2] scale-x-[-1] rotate-180"
-      
-      ></video>
+      {/* background */}
+      <div className="absolute inset-0 top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-[0.3]">
+        <Particles
+          particleColors={['#1F2E99', '#ffffff']}
+          particleCount={333}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
 
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">

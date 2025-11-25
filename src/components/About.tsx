@@ -1,5 +1,5 @@
 import { Code2, Eye, HeartHandshake, Lightbulb, Star, StarHalf, StarIcon, Target } from "lucide-react";
-import bgVideo from "@/assets/backgroundVideo.mp4";
+import Particles from './folio_ui/Particles';
 import aboutPerfilImg from "@/assets/eu de ia.png";
 import { useRef, useEffect } from "react";
 
@@ -78,22 +78,23 @@ export const About = ({ language }: AboutProps) => {
   }, []);
 
   return (
-    <section id="about" className="relative min-h-screen py-30 md:py-40 flex items-center justify-center">
+    <section id="about" className="relative h-screen pt-[100px] md:pt-[150px] flex items-center justify-center">
 
-      {/* video de fundo */}
-      <div className="absolute inset-0 pointer-events-none">
-        <video
-          ref={videoRefBG}
-          src={bgVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-[0.2] rotate-180 scale-x-[-1]"
+      <div className="absolute inset-0 top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-[0.3]">
+        <Particles
+          particleColors={['#1F2E99', '#ffffff']}
+          particleCount={333}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
         />
       </div>
 
       <div className="relative container mx-auto px-6">
+
         <div className="grid md:grid-cols-[1fr_1fr] items-top">
 
           {/* container invisivel foto + card sobre mim */}
@@ -144,7 +145,7 @@ export const About = ({ language }: AboutProps) => {
               </div>
             </div>
           </div>
-          
+
           {/* cards de especializacao */}
           <div className="space-y-6">
 
@@ -189,7 +190,7 @@ export const About = ({ language }: AboutProps) => {
             ))}
           </div>
 
-          
+
 
         </div>
       </div>
