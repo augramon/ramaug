@@ -3,6 +3,7 @@ import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiHtml5, S
 import LogoLoop from './folio_ui/LogoLoop';
 import Particles from './folio_ui/Particles';
 import RotatingText from './folio_ui/RotatingText'
+import SpotlightCard from './folio_ui/SpotlightCard';
 
 interface SkillsProps {
   language: "pt" | "en";
@@ -182,11 +183,14 @@ export const Skills = ({ language }: SkillsProps) => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {content[language].skills.map((skill, index) => (
-            <div
+
+            
+            <SpotlightCard
+              spotlightColor="rgba(0, 229, 255, 0.2)"
               key={index}
               className="glass-dark p-6 rounded-xl hover:scale-105 transition-all duration-300 group animate-slide-in-left border border-accent/20"
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
+              
               <div className="flex items-center gap-4 mb-4">
 
                 {/* icones */}
@@ -209,7 +213,7 @@ export const Skills = ({ language }: SkillsProps) => {
                   </span>
                 ))}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
